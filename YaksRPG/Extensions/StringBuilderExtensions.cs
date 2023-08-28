@@ -12,6 +12,8 @@ public static class StringBuilderExtensions
                             {{wide
                             ## {{{characterClass.Name}}}
                             }}
+
+                            {{{characterClass.Flavour}}}
                             """);
 
     foreach (var feature in characterClass.Features)
