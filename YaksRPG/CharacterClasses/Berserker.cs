@@ -35,7 +35,7 @@ public sealed class Berserker : ICharacterClass
     {
       Name = "Blade Catch",
       Description =
-        "When an opponent declares an attack against you, you can use your Reaction and skip their attack and damage rolls and guarantee that the attack deals damage, then make an attack against that opponent.",
+        "When an opponent declares an attack against you, you can use your Reaction and skip their attack roll, guaranteeing that the attack deals damage, then make an attack against that opponent.",
       Type = FeatureType.Major
     },
           
