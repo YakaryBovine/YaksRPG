@@ -196,6 +196,14 @@ public sealed class Berserker : ICharacterClass
       Description =
         "You are unaffected by any attempts to push you, pull you, or otherwise displace you against your will.",
       Type = FeatureType.Minor
-    }
+    },
+    
+    new Feature
+    {
+      Name = "Shocking Assault",
+      Description =
+        "You deal Shock damage regardless of the opponent's AC, and your Shock damage is increased by 2.",
+      Type = FeatureType.Major
+    },
   };
 }
