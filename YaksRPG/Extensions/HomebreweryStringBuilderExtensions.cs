@@ -11,22 +11,27 @@ public static class HomebreweryStringBuilderExtensions
     stringBuilder.AppendFiller();
     
     stringBuilder.AppendClassPageHeader(characterClass);
+    stringBuilder.AppendClassHeading(characterClass);
+    
+    stringBuilder.AppendMajorFeaturesHeading();
+    foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Major))
+      stringBuilder.AppendFeature(feature);
+    
+    stringBuilder.AppendMinorFeaturesHeading();
+    foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Minor))
+      stringBuilder.AppendFeature(feature);
+  }
+
+  private static void AppendClassHeading(this StringBuilder stringBuilder, ICharacterClass characterClass)
+  {
     stringBuilder.Append($$$"""
-                            
+
                             {{wide
                             ## {{{characterClass.Name}}}
                             }}
 
                             {{{characterClass.Flavour}}}
                             """);
-    
-    stringBuilder.AppendMajorFeaturesHeader();
-    foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Major))
-      stringBuilder.AppendFeature(feature);
-    
-    stringBuilder.AppendMinorFeaturesHeader();
-    foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Minor))
-      stringBuilder.AppendFeature(feature);
   }
 
   private static void AppendFiller(this StringBuilder stringBuilder)
@@ -92,7 +97,7 @@ public static class HomebreweryStringBuilderExtensions
                          """);
   }
 
-  private static void AppendMajorFeaturesHeader(this StringBuilder stringBuilder)
+  private static void AppendMajorFeaturesHeading(this StringBuilder stringBuilder)
   {
     stringBuilder.Append("""
                          
@@ -100,7 +105,7 @@ public static class HomebreweryStringBuilderExtensions
                          """);
   }
   
-  private static void AppendMinorFeaturesHeader(this StringBuilder stringBuilder)
+  private static void AppendMinorFeaturesHeading(this StringBuilder stringBuilder)
   {
     stringBuilder.Append("""
                          
