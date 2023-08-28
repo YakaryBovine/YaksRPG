@@ -9,4 +9,6 @@ public interface ICharacterClass
   public DiceRoll HitDicePerLevel { get; }
 
   public int AttackBonusPerLevel { get; }
+  
+  public IEnumerable<Feature> Features { get; }
 }

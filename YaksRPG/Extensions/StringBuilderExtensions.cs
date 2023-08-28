@@ -5,12 +5,27 @@ namespace YaksRPG.Extensions;
 
 public static class StringBuilderExtensions
 {
-  public static void Append(this StringBuilder stringBuilder, ICharacterClass characterClass)
+  /// <summary>Appends an <see cref="ICharacterClass"/> to the <see cref="StringBuilder"/>.</summary>
+  public static void AppendCharacterClass(this StringBuilder stringBuilder, ICharacterClass characterClass)
   {
     stringBuilder.Append($$$"""
                             {{wide
                             ## {{{characterClass.Name}}}
                             }}
                             """);
+
+    foreach (var feature in characterClass.Features)
+      stringBuilder.AppendFeature(feature);
+  }
+
+  /// <summary>Appends a <see cref="Feature"/> to the <see cref="StringBuilder"/>.</summary>
+  public static void AppendFeature(this StringBuilder stringBuilder, Feature feature)
+  {
+    stringBuilder.Append($$$"""
+                         
+                         {{feature
+                         **{{{feature.Name}}}:** {{{feature.Description}}}
+                         }}
+                         """);
   }
 }
