@@ -21,6 +21,11 @@ public sealed class Berserker : CharacterClass
       Name = "Strong",
       Description = "Influence the world through raw physical power."
     };
+    var instinctTheme = new Theme
+    {
+      Name = "Instinct",
+      Description = "React quickly to incoming danger, and shrug off effects that would impair the minds of lesser men."
+    };
 
     Themes = new[]
     {
@@ -29,7 +34,7 @@ public sealed class Berserker : CharacterClass
       strongTheme
     };
 
-    Features = InitializeFeatures(brawlingTheme, overexertionTheme, strongTheme);
+    Features = InitializeFeatures(brawlingTheme, overexertionTheme, strongTheme, instinctTheme);
   }
 
   public override string Name => "Berserker";
@@ -49,7 +54,7 @@ public sealed class Berserker : CharacterClass
   public override IEnumerable<Theme> Themes { get; }
 
   private static IEnumerable<Feature> InitializeFeatures(Theme brawlingTheme, Theme overexertionTheme,
-    Theme strongTheme)
+    Theme strongTheme, Theme instinctTheme)
   {
     return new[]
     {
@@ -196,7 +201,8 @@ public sealed class Berserker : CharacterClass
         Name = "Danger Sense",
         Description =
           "You have advantage on Dexterity saving throws against effects that you can see, such as traps and spells.",
-        Type = FeatureType.Minor
+        Type = FeatureType.Minor,
+        Theme = instinctTheme
       },
 
       new Feature
@@ -227,7 +233,8 @@ public sealed class Berserker : CharacterClass
       {
         Name = "Pure Instinct",
         Description = "You can't be Surprised, and you have Advantage on Initiative checks.",
-        Type = FeatureType.Minor
+        Type = FeatureType.Minor,
+        Theme = instinctTheme
       },
 
       new Feature
