@@ -10,17 +10,18 @@ public static class HomebreweryStringBuilderExtensions
   {
     stringBuilder.AppendClassPageHeader(characterClass);
     stringBuilder.AppendClassHeading(characterClass);
-    
-    stringBuilder.AppendFeaturesHeading(FeatureType.Core);
-    foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Core))
-      stringBuilder.AppendFeature(feature);
-    
-    stringBuilder.AppendFeaturesHeading(FeatureType.Major);
-    foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Major))
-      stringBuilder.AppendFeature(feature);
-    
-    stringBuilder.AppendFeaturesHeading(FeatureType.Minor);
-    foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Minor))
+    stringBuilder.AppendFeatures(characterClass, FeatureType.Core);
+    stringBuilder.AppendFeatures(characterClass, FeatureType.Major);
+    stringBuilder.AppendFeatures(characterClass, FeatureType.Minor);
+  }
+
+  private static void AppendFeatures(this StringBuilder stringBuilder, ICharacterClass characterClass, FeatureType featureType)
+  {
+    stringBuilder.Append($"""
+
+                          #### {featureType.GetName()} Features
+                          """);
+    foreach (var feature in characterClass.Features.Where(x => x.Type == featureType))
       stringBuilder.AppendFeature(feature);
   }
 
@@ -96,14 +97,6 @@ public static class HomebreweryStringBuilderExtensions
                          {{feature
                          **{{{feature.Name}}}:** {{{feature.Description}}}
                          }}
-                         """);
-  }
-
-  private static void AppendFeaturesHeading(this StringBuilder stringBuilder, FeatureType featureType)
-  {
-    stringBuilder.Append($"""
-                         
-                         #### {featureType.GetName()} Features
                          """);
   }
 }
