@@ -201,4 +201,23 @@ public sealed class Berserker : ICharacterClass
       Type = FeatureType.Major
     },
   };
+
+  public IEnumerable<Theme> Themes { get; } = new[]
+  {
+    new Theme
+    {
+      Name = "Brawling",
+      Description = "Deal damage, throw around foes, and resist attacks, all without relying on weapons or armour."
+    },
+    new Theme
+    {
+      Name = "Overexertion",
+      Description = "Perform extraordinary feats by pushing your body past its natural limits."
+    },
+    new Theme
+    {
+      Name = "Strong",
+      Description = "Influence the world through raw physical power."
+    }
+  };
 }

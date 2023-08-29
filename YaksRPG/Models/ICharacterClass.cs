@@ -11,4 +11,9 @@ public interface ICharacterClass
   public float AttackBonusPerLevel { get; }
   
   public IEnumerable<Feature> Features { get; }
+  
+  /// <summary>
+  /// A set of <see cref="Themes"/> that this <see cref="ICharacterClass"/> embodies.
+  /// </summary>
+  public IEnumerable<Theme> Themes { get; }
 }

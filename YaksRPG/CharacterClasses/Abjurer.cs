@@ -201,4 +201,23 @@ public sealed class Abjurer : ICharacterClass
       Type = FeatureType.Major
     }
   };
+
+  public IEnumerable<Theme> Themes { get; } = new[]
+  {
+    new Theme
+    {
+      Name = "Shields",
+      Description = "Protect yourself and others from damage and unwanted effects using magical shields."
+    },
+    new Theme
+    {
+      Name = "Spell Manipulation",
+      Description = "Enhance, diminish, redirect, reuse, or otherwise change other magical effects."
+    },
+    new Theme
+    {
+      Name = "Teleportation",
+      Description = "Magically relocate yourself, allies, or enemies."
+    }
+  };
 }

@@ -45,6 +45,7 @@ public sealed class HomebreweryDocumentBuilder
   {
     AppendClassPageHeader(characterClass);
     AppendClassHeading(characterClass);
+    AppendThemes(characterClass);
     AppendClassProgressionTable(characterClass);
     AppendFeatures(characterClass, FeatureType.Core);
     AppendFeatures(characterClass, FeatureType.Major);
@@ -97,7 +98,7 @@ public sealed class HomebreweryDocumentBuilder
                                 """);
   }
 
-  private void AppendFeature( Feature feature)
+  private void AppendFeature(Feature feature)
   {
     _stringBuilder.AppendLine($$$"""
                                 {{feature
@@ -105,4 +106,21 @@ public sealed class HomebreweryDocumentBuilder
                                 }}
                                 """);
   }
+
+  private void AppendThemes(ICharacterClass characterClass)
+  {
+    _stringBuilder.AppendLine("#### Themes");
+    foreach (var theme in characterClass.Themes)
+      AppendTheme(theme);
+  }
+
+  private void AppendTheme(Theme theme)
+  {
+    _stringBuilder.AppendLine($$$"""
+                                 {{feature
+                                 **{{{theme.Name}}}:** {{{theme.Description}}}
+                                 }}
+                                 """);
+  }
+
 }
