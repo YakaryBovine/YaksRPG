@@ -195,14 +195,14 @@ public sealed class Abjurer : ICharacterClass
     new Feature
     {
       Name = "Mark and Recall",
-      Description = $"As a {ActionType.Main}, either designate your current location as a Mark, or teleport to your Mark.",
+      Description = $"As a {ActionType.Main.GetName()}, either designate your current location as a Mark, or teleport to your Mark.",
       Type = FeatureType.Minor
     },
     
     new Feature
     {
       Name = "Barrier Bubble",
-      Description = $"As a {ActionType.Main}, conjure a 10-foot radius spherical bubble around yourself. The bubble has 10 AC and hit points equal to 10 + your level + your Intelligence modifier. Damage that would be dealt to friendly creatures within the bubble from sources outside the bubble instead damage the bubble. The bubble dissipates at the start of your turn unless you spend your {ActionType.Main} to sustain it.",
+      Description = $"As a {ActionType.Main.GetName()}, conjure a 10-foot radius spherical bubble around yourself. The bubble has 10 AC and hit points equal to 10 + your level + your Intelligence modifier. Damage that would be dealt to friendly creatures within the bubble from sources outside the bubble instead damage the bubble. The bubble dissipates at the start of your turn unless you spend your {ActionType.Main.GetName()} to sustain it.",
       Type = FeatureType.Major
     }
   };
