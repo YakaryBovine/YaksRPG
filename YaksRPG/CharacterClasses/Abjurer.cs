@@ -86,5 +86,26 @@ public sealed class Abjurer : ICharacterClass
       Description = $"You have a limited pool of {ResourceType.Mana.GetName()}, which is used to fuel your spells. Your {ResourceType.Mana.GetName()} is equal to 10 plus your Intelligence modifier. You regain half of your mana, rounded down, whenever you rest.",
       Type = FeatureType.Core
     },
+    
+    new Feature
+    {
+      Name = "Warp",
+      Description = $"As a {ActionType.Side.GetName()}, choose yourself or a willing ally within 15 feet and teleport it to an occupied visible location within 30 feet.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Glyphwork",
+      Description = $"You can spend 10 minutes inscribing glyphs into the structure of a room no larger than 100 feet by 100 feet. While within that room, the inscribed glyphs collectively have 5 {ResourceType.Mana.GetName()}, and you can spend that {ResourceType.Mana.GetName()} as if it were your own.",
+      Type = FeatureType.Minor
+    },
+          
+    new Feature
+    {
+      Name = "Arcane Ward",
+      Description = $"When you spend {ResourceType.Mana.GetName()}, you gain temporary hit points equal to the {ResourceType.Mana.GetName()} spent.",
+      Type = FeatureType.Major
+    }
   };
 }
