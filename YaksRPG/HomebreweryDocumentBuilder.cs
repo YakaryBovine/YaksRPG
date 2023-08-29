@@ -57,7 +57,7 @@ public sealed class HomebreweryDocumentBuilder
   {
     _stringBuilder.AppendLine("""
                              | Level | Hit Dice | Attack Bonus | Major Techniques | Minor Techniques |
-                             |:-:|:-:|:-:|:--|:--|
+                             |:-:|:-:|:-:|:-:|:-:|
                              """);
     for (var level = 0; level < 10; level++)
       AppendClassProgressionTableLine(characterClass, level);
