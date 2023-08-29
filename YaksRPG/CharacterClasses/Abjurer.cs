@@ -75,6 +75,13 @@ public sealed class Abjurer : ICharacterClass
     
     new Feature
     {
+      Name = "Assert Magic",
+      Description = "When a creature within 60 feet of you succeeds on a Saving Throw against a spell, you can use your Reaction to force it to reroll the throw once.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
       Name = "Signature Spell",
       Description = $"When you acquire this Feature, choose another Feature that costs mana, and permanently half its {ResourceType.Mana.GetName()} cost.",
       Type = FeatureType.Major
@@ -105,6 +112,97 @@ public sealed class Abjurer : ICharacterClass
     {
       Name = "Arcane Ward",
       Description = $"When you spend {ResourceType.Mana.GetName()}, you gain temporary hit points equal to the {ResourceType.Mana.GetName()} spent.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Mind Fortress",
+      Description = "As a Main Action, touch a creature to grant it resistance to psychic damage, as well as advantage on Intelligence, Wisdom, and Charisma saving throws for up to one hour.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Redirect Spell",
+      Description = "When a creature within 60 feet of you would be successfully affected by a spell that explicitly targets them, you can use your Reaction to choose another target for the spell. If the caster is unwilling, you must succeed an Arcana (Intelligence) skill check at a DC equal to 10 plus the caster's level, or the spell is not redirected.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Circle of Power",
+      Description = $"As a {ActionType.Main.GetName()}, inscribe a magical 10-foot radius circle on the floor underneath you. The circle has 5 {ResourceType.Mana}, which friendly casters standing on the circle may use to fuel their spells. The circle disappears once it runs out of mana.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Reiterate",
+      Description = $"When a creature within 60 feet of you successfully casts a spell, you can use your {ActionType.Reaction.GetName()} to cast that spell again. You may choose new targets for the spell, but may not change anything else. If the caster is unwilling, you must succeed an Arcana (Intelligence) skill check at a DC equal to 10 plus the caster's level, or the spell is not reiterated.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Store Magic",
+      Description = $"You can spend 10 minutes to store a spell you know in a mundane object, spending {ResourceType.Mana.GetName()} equal to its ordinary cost. The holder of the item may then cast the spell within without spending {ResourceType.Mana.GetName()}, destroying the object in the process. You may only store spells in three objects at a time, and any spells stored this way dissipate when you rest.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Portal",
+      Description = $"As a {ActionType.Main.GetName()}, create a portal between two points that you can see within 120 feet. Creatures can move through one portal to the other. The portals last until the end of the scene.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Disrupt Portal",
+      Description = $"As a {ActionType.Main.GetName()}, touch a portal and destroy it permanently. If the caster is unwilling, you must succeed an Arcana (Intelligence) skill check at a DC equal to 10 plus the caster's level. On a failure, the portal is not destroyed and you cannot try again until you rest.",
+      Type = FeatureType.Minor
+    },
+    
+    new Feature
+    {
+      Name = "Antimagic Zone",
+      Description = $"As a {ActionType.Main.GetName()}, create a 10-foot radius Antimagic Zone around a visible point within 60 feet. Creatures and objects within the zone are unaffected by magic, magical effects cannot pass through it or function within it, and enchanted objects behave as if they are mundane. Deities and artifacts may ignore the effects of the zone.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Transfer Mana",
+      Description = $"As a {ActionType.Main.GetName()}, choose a target within 60 feet and either transfer 4 {ResourceType.Mana.GetName()} from you to them or transfer 4 {ResourceType.Mana.GetName()} from them to you. If you choose to take Mana, the target makes a Wisdom Saving Throw; on a success, you only take 2 {ResourceType.Mana.GetName()}.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Banish",
+      Description = $"As a {ActionType.Main.GetName()}, banish a visible creature within 60 feet to a harmless demiplane. At the end of each of its turns, the target may make a Charisma Saving Throw, and on a failure, it reappears in the space it left or in the nearest unoccupied space if that space is occupied.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Pocket Demiplane",
+      Description = "You can spend 6 hours touching a door, manhole, or other entrance to transform it into the entrance to a demiplane containing a single villa. The villa has four bedrooms, two bathrooms, an entertainment room, two offices, and a basement. The demiplane contains nothing but the villa, and has no outdoors. Creatures may enter the demiplane via the entrance you create, and may leave via the front door. You can destroy the entrance from any distance with one hour of focus, at which point the occupants are safely ejected. The contents of the demiplane are preserved, and if you make a new entrance, you return to the same villa.",
+      Type = FeatureType.Minor
+    },
+    
+    new Feature
+    {
+      Name = "Mark and Recall",
+      Description = $"As a {ActionType.Main}, either designate your current location as a Mark, or teleport to your Mark.",
+      Type = FeatureType.Minor
+    },
+    
+    new Feature
+    {
+      Name = "Barrier Bubble",
+      Description = $"As a {ActionType.Main}, conjure a 10-foot radius spherical bubble around yourself. The bubble has 10 AC and hit points equal to 10 + your level + your Intelligence modifier. Damage that would be dealt to friendly creatures within the bubble from sources outside the bubble instead damage the bubble. The bubble dissipates at the start of your turn unless you spend your {ActionType.Main} to sustain it.",
       Type = FeatureType.Major
     }
   };
