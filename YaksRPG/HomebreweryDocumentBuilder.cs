@@ -46,13 +46,14 @@ public sealed class HomebreweryDocumentBuilder
     AppendClassPageHeader(characterClass);
     AppendClassHeading(characterClass);
     AppendThemes(characterClass);
-    AppendClassProgressionTable(characterClass);
+    AppendFlavour(characterClass);
+    AppendProgressionTable(characterClass);
     AppendFeatures(characterClass, FeatureType.Core);
     AppendFeatures(characterClass, FeatureType.Major);
     AppendFeatures(characterClass, FeatureType.Minor);
   }
 
-  private void AppendClassProgressionTable(ICharacterClass characterClass)
+  private void AppendProgressionTable(ICharacterClass characterClass)
   {
     _stringBuilder.AppendLine("""
                              | Level | Hit Dice | Attack Bonus | Major Techniques | Minor Techniques |
@@ -84,10 +85,10 @@ public sealed class HomebreweryDocumentBuilder
                                 {{wide
                                 ## {{{characterClass.Name}}}
                                 }}
-
-                                {{{characterClass.Flavour}}}
                                 """);
   }
+
+  private void AppendFlavour(ICharacterClass characterClass) => _stringBuilder.AppendLine($"{characterClass.Flavour}");
 
   private void AppendClassPageHeader(ICharacterClass characterClass)
   {
@@ -109,13 +110,14 @@ public sealed class HomebreweryDocumentBuilder
 
   private void AppendThemes(ICharacterClass characterClass)
   {
-    _stringBuilder.AppendLine("#### Themes");
     _stringBuilder.AppendLine("""
-                              | Theme | Description |
-                              |------:|:---------|
+                              | Theme |  |
+                              |:------|---------:|
                               """);
     foreach (var theme in characterClass.Themes)
       AppendThemeTableLine(theme);
+    
+    _stringBuilder.AppendLine();
   }
 
   private void AppendThemeTableLine(Theme theme) => _stringBuilder.AppendLine($"| {theme.Name} | {theme.Description} |");
