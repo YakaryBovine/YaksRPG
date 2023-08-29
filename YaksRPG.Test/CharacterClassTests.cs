@@ -9,17 +9,18 @@ public class CharacterClassTests
 {
   [Theory]
   [MemberData(nameof(GetAllClasses))]
-  public void AllCharacterClasses_SatisfyTheirThemes(CharacterClass characterClass)
+  public void AllCharacterClasses_SatisfyTheirThemes(CharacterClass characterClass, Theme theme)
   {
-    foreach (var theme in characterClass.Themes)
-      characterClass.Features
-        .Where(x => x.Theme == theme)
-        .Should()
-        .NotBeEmpty($"{characterClass.Name}s should have at least a few {nameof(Feature)} that satisfy their {theme.Name} {nameof(Theme)}.");
+    characterClass.Features
+      .Where(x => x.Theme == theme)
+      .Should()
+      .NotBeEmpty($"{characterClass.Name}s should have at least one feature that satisfies their {theme.Name} theme.");
   }
 
   public static IEnumerable<object[]> GetAllClasses()
   {
-    return CharacterClassProvider.GetAllCharacterClasses().Select(characterClass => new object[] { characterClass });
+    foreach (var characterClass in CharacterClassProvider.GetAllCharacterClasses()) 
+      foreach (var theme in characterClass.Themes)
+        yield return new object[] { characterClass, theme };
   }
 }
