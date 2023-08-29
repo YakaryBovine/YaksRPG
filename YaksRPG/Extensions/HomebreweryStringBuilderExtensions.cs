@@ -17,11 +17,15 @@ public static class HomebreweryStringBuilderExtensions
 
   private static void AppendFeatures(this StringBuilder stringBuilder, ICharacterClass characterClass, FeatureType featureType)
   {
+    var matchingFeatures = characterClass.Features.Where(x => x.Type == featureType).ToList();
+    if (!matchingFeatures.Any())
+      return;
+    
     stringBuilder.Append($"""
 
                           #### {featureType.GetName()} Features
                           """);
-    foreach (var feature in characterClass.Features.Where(x => x.Type == featureType))
+    foreach (var feature in matchingFeatures)
       stringBuilder.AppendFeature(feature);
   }
 
