@@ -2,6 +2,7 @@
 
 public enum FeatureType
 {
+  Core,
   Major,
   Minor
 }

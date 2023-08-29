@@ -11,11 +11,15 @@ public static class HomebreweryStringBuilderExtensions
     stringBuilder.AppendClassPageHeader(characterClass);
     stringBuilder.AppendClassHeading(characterClass);
     
-    stringBuilder.AppendMajorFeaturesHeading();
+    stringBuilder.AppendFeaturesHeading(FeatureType.Core);
+    foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Core))
+      stringBuilder.AppendFeature(feature);
+    
+    stringBuilder.AppendFeaturesHeading(FeatureType.Major);
     foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Major))
       stringBuilder.AppendFeature(feature);
     
-    stringBuilder.AppendMinorFeaturesHeading();
+    stringBuilder.AppendFeaturesHeading(FeatureType.Minor);
     foreach (var feature in characterClass.Features.Where(x => x.Type == FeatureType.Minor))
       stringBuilder.AppendFeature(feature);
   }
@@ -95,19 +99,11 @@ public static class HomebreweryStringBuilderExtensions
                          """);
   }
 
-  private static void AppendMajorFeaturesHeading(this StringBuilder stringBuilder)
+  private static void AppendFeaturesHeading(this StringBuilder stringBuilder, FeatureType featureType)
   {
-    stringBuilder.Append("""
+    stringBuilder.Append($"""
                          
-                         #### Major Features
-                         """);
-  }
-  
-  private static void AppendMinorFeaturesHeading(this StringBuilder stringBuilder)
-  {
-    stringBuilder.Append("""
-                         
-                         #### Minor Features
+                         #### {featureType.GetName()} Features
                          """);
   }
 }

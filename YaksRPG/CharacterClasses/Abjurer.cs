@@ -1,4 +1,5 @@
-﻿using YaksRPG.Models;
+﻿using YaksRPG.Extensions;
+using YaksRPG.Models;
 
 namespace YaksRPG.CharacterClasses;
 
@@ -75,8 +76,15 @@ public sealed class Abjurer : ICharacterClass
     new Feature
     {
       Name = "Signature Spell",
-      Description = $"When you acquire this Feature, choose another Feature that costs mana, and permanently half its {ResourceType.Mana.ToString()} cost.",
+      Description = $"When you acquire this Feature, choose another Feature that costs mana, and permanently half its {ResourceType.Mana.GetName()} cost.",
       Type = FeatureType.Major
-    }
+    },
+    
+    new Feature
+    {
+      Name = "Mana",
+      Description = $"You have a limited pool of {ResourceType.Mana.GetName()}, which is used to fuel your spells. Your {ResourceType.Mana.GetName()} is equal to 10 plus your Intelligence modifier. You regain half of your mana, rounded down, whenever you rest.",
+      Type = FeatureType.Core
+    },
   };
 }
