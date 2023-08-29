@@ -8,8 +8,6 @@ public static class HomebreweryStringBuilderExtensions
   /// <summary>Appends an <see cref="ICharacterClass"/> to the <see cref="StringBuilder"/>.</summary>
   public static void AppendCharacterClass(this StringBuilder stringBuilder, ICharacterClass characterClass)
   {
-    stringBuilder.AppendFiller();
-    
     stringBuilder.AppendClassPageHeader(characterClass);
     stringBuilder.AppendClassHeading(characterClass);
     
@@ -22,19 +20,7 @@ public static class HomebreweryStringBuilderExtensions
       stringBuilder.AppendFeature(feature);
   }
 
-  private static void AppendClassHeading(this StringBuilder stringBuilder, ICharacterClass characterClass)
-  {
-    stringBuilder.Append($$$"""
-
-                            {{wide
-                            ## {{{characterClass.Name}}}
-                            }}
-
-                            {{{characterClass.Flavour}}}
-                            """);
-  }
-
-  private static void AppendFiller(this StringBuilder stringBuilder)
+  public static void AppendFiller(this StringBuilder stringBuilder)
   {
     stringBuilder.Append("""
                          ![bg main](https://images.squarespace-cdn.com/content/v1/548a736be4b04f6e8e823d49/1596045860203-OCM1RXRUY9KWLF2AB4Q2/Avartar-4-naomi-vandoren-web1080-crop.jpg?format=1000w) {position:absolute;top:-150px;left:-180px;height:1210px;}
@@ -77,6 +63,18 @@ public static class HomebreweryStringBuilderExtensions
                          """);
   }
 
+  private static void AppendClassHeading(this StringBuilder stringBuilder, ICharacterClass characterClass)
+  {
+    stringBuilder.Append($$$"""
+
+                            {{wide
+                            ## {{{characterClass.Name}}}
+                            }}
+
+                            {{{characterClass.Flavour}}}
+                            """);
+  }
+  
   private static void AppendClassPageHeader(this StringBuilder stringBuilder, ICharacterClass characterClass)
   {
     stringBuilder.Append($$$"""

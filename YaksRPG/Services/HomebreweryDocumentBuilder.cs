@@ -16,6 +16,7 @@ public sealed class HomebreweryDocumentBuilder
   
   public string GenerateHomebreweryDocument()
   {
+    _stringBuilder.AppendFiller();
     foreach (var characterClass in _characterClasses)
       _stringBuilder.AppendCharacterClass(characterClass);
       
