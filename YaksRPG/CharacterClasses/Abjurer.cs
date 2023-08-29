@@ -63,6 +63,20 @@ public sealed class Abjurer : ICharacterClass
       Name = "Nondetection",
       Description = "As a Main Action, touch a creature to render it immune to magical effects which remotely identify its location, such as scrying or magical sensors. This lasts until you are knocked unconscious or willingly end the effect.",
       Type = FeatureType.Minor
+    },
+    
+    new Feature
+    {
+      Name = "Resist Magic",
+      Description = "When a creature within 60 feet of you fails a Saving Throw against a spell, you can use your Reaction to allow it to reroll the throw once.",
+      Type = FeatureType.Major
+    },
+    
+    new Feature
+    {
+      Name = "Signature Spell",
+      Description = $"When you acquire this Feature, choose another Feature that costs mana, and permanently half its {ResourceType.Mana.ToString()} cost.",
+      Type = FeatureType.Major
     }
   };
 }
