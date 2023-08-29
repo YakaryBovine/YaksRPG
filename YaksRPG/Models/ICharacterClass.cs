@@ -1,19 +1,17 @@
 ﻿namespace YaksRPG.Models;
 
-public interface ICharacterClass
+public abstract class CharacterClass
 {
-  public string Name { get; }
-  
-  public string Flavour { get; }
-  
-  public DiceRoll HitDicePerLevel { get; }
+  public abstract string Name { get; }
+  public abstract string Flavour { get; }
+  public abstract DiceRoll HitDicePerLevel { get; }
+  public abstract float AttackBonusPerLevel { get; }
+  public abstract IEnumerable<Feature> Features { get; }
 
-  public float AttackBonusPerLevel { get; }
-  
-  public IEnumerable<Feature> Features { get; }
-  
   /// <summary>
-  /// A set of <see cref="Themes"/> that this <see cref="ICharacterClass"/> embodies.
+  /// A set of <see cref="Themes" /> that this <see cref="CharacterClass" /> embodies.
   /// </summary>
-  public IEnumerable<Theme> Themes { get; }
+  public abstract IEnumerable<Theme> Themes { get; }
+
+  public override string ToString() => Name;
 }

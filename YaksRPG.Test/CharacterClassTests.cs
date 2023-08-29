@@ -9,7 +9,7 @@ public class CharacterClassTests
 {
   [Theory]
   [MemberData(nameof(GetAllClasses))]
-  public void AllCharacterClasses_SatisfyTheirThemes(ICharacterClass characterClass)
+  public void AllCharacterClasses_SatisfyTheirThemes(CharacterClass characterClass)
   {
     foreach (var theme in characterClass.Themes)
       characterClass.Features

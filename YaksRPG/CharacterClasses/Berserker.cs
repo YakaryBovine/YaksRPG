@@ -2,21 +2,21 @@
 
 namespace YaksRPG.CharacterClasses;
 
-public sealed class Berserker : ICharacterClass
+public sealed class Berserker : CharacterClass
 {
-  public string Name => "Berserker";
+  public override string Name => "Berserker";
 
-  public string Flavour => """
-                           Ruthless, unrelenting, and unstoppable - these traits define the Berserker's approach to violence. Possessed of inhuman strength, these paragons of danger cut swathes through the battlefield like knives through butter, raging against the rational restraints that limit other warriors in favour of pure instinct honed through years of struggle.
-                           
-                           Berserkers rely on their raw strength, resilience, and instinct even outside of combat. The most headstrong among them can burst their way through any physical obstacle, while others can disregard the effects of even the most extreme weather conditions simply by gritting their teeth hard enough.
-                           """;
+  public override string Flavour => """
+                                    Ruthless, unrelenting, and unstoppable - these traits define the Berserker's approach to violence. Possessed of inhuman strength, these paragons of danger cut swathes through the battlefield like knives through butter, raging against the rational restraints that limit other warriors in favour of pure instinct honed through years of struggle.
 
-  public DiceRoll HitDicePerLevel { get; } = new(1, 8, 2);
+                                    Berserkers rely on their raw strength, resilience, and instinct even outside of combat. The most headstrong among them can burst their way through any physical obstacle, while others can disregard the effects of even the most extreme weather conditions simply by gritting their teeth hard enough.
+                                    """;
 
-  public float AttackBonusPerLevel => 1;
+  public override DiceRoll HitDicePerLevel { get; } = new(1, 8, 2);
 
-  public IEnumerable<Feature> Features { get; } = new[]
+  public override float AttackBonusPerLevel => 1;
+
+  public override IEnumerable<Feature> Features { get; } = new[]
   {
     new Feature
     {
@@ -202,7 +202,7 @@ public sealed class Berserker : ICharacterClass
     },
   };
 
-  public IEnumerable<Theme> Themes { get; } = new[]
+  public override IEnumerable<Theme> Themes { get; } = new[]
   {
     new Theme
     {

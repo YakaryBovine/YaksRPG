@@ -3,21 +3,21 @@ using YaksRPG.Models;
 
 namespace YaksRPG.CharacterClasses;
 
-public sealed class Abjurer : ICharacterClass
+public sealed class Abjurer : CharacterClass
 {
-  public string Name => "Abjurer";
+  public override string Name => "Abjurer";
 
-  public string Flavour => """
-                           The School of Abjuration emphasizes magic that blocks, banishes, or protects. Detractors of this school say that its tradition is about denial, negation rather than positive assertion. You understand, however, that ending harmful effects, protecting the weak, and banishing evil influences is anything but a philosophical void. It is a proud and respected vocation.
-                             
-                           Called abjurers, members of this school are sought when baleful spirits require exorcism, when important locations must be guarded against magical spying, and when portals to other planes of existence must be closed.
-                           """;
+  public override string Flavour => """
+                                    The School of Abjuration emphasizes magic that blocks, banishes, or protects. Detractors of this school say that its tradition is about denial, negation rather than positive assertion. You understand, however, that ending harmful effects, protecting the weak, and banishing evil influences is anything but a philosophical void. It is a proud and respected vocation.
+                                      
+                                    Called abjurers, members of this school are sought when baleful spirits require exorcism, when important locations must be guarded against magical spying, and when portals to other planes of existence must be closed.
+                                    """;
 
-  public DiceRoll HitDicePerLevel { get; } = new(1, 6, -2);
+  public override DiceRoll HitDicePerLevel { get; } = new(1, 6, -2);
 
-  public float AttackBonusPerLevel => 0.5f;
+  public override float AttackBonusPerLevel => 0.5f;
 
-  public IEnumerable<Feature> Features { get; } = new[]
+  public override IEnumerable<Feature> Features { get; } = new[]
   {
     new Feature
     {
@@ -202,7 +202,7 @@ public sealed class Abjurer : ICharacterClass
     }
   };
 
-  public IEnumerable<Theme> Themes { get; } = new[]
+  public override IEnumerable<Theme> Themes { get; } = new[]
   {
     new Theme
     {

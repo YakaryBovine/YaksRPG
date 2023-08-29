@@ -35,13 +35,13 @@ public sealed class HomebreweryDocumentBuilder
                              """);
   }
 
-  public void AppendCharacterClasses(IEnumerable<ICharacterClass> characterClasses)
+  public void AppendCharacterClasses(IEnumerable<CharacterClass> characterClasses)
   {
     foreach (var characterClass in characterClasses)
       AppendCharacterClass(characterClass);
   }
 
-  private void AppendCharacterClass(ICharacterClass characterClass)
+  private void AppendCharacterClass(CharacterClass characterClass)
   {
     AppendClassPageHeader(characterClass);
     AppendClassHeading(characterClass);
@@ -53,7 +53,7 @@ public sealed class HomebreweryDocumentBuilder
     AppendFeatures(characterClass, FeatureType.Minor);
   }
 
-  private void AppendProgressionTable(ICharacterClass characterClass)
+  private void AppendProgressionTable(CharacterClass characterClass)
   {
     _stringBuilder.AppendLine("""
                              | Level | Hit Dice | Attack Bonus | Major Techniques | Minor Techniques |
@@ -63,13 +63,13 @@ public sealed class HomebreweryDocumentBuilder
       AppendClassProgressionTableLine(characterClass, level);
   }
 
-  private void AppendClassProgressionTableLine(ICharacterClass characterClass, int level)
+  private void AppendClassProgressionTableLine(CharacterClass characterClass, int level)
   {
     var levelPlusOne = level + 1;
     _stringBuilder.AppendLine($"| {levelPlusOne} | {characterClass.HitDicePerLevel * levelPlusOne} | +{Math.Ceiling(characterClass.AttackBonusPerLevel*levelPlusOne)} | {level} | { 1+levelPlusOne/3 }");
   }
 
-  private void AppendFeatures(ICharacterClass characterClass, FeatureType featureType)
+  private void AppendFeatures(CharacterClass characterClass, FeatureType featureType)
   {
     var matchingFeatures = characterClass.Features.Where(x => x.Type == featureType).ToList();
     if (!matchingFeatures.Any())
@@ -80,7 +80,7 @@ public sealed class HomebreweryDocumentBuilder
       AppendFeature(feature);
   }
 
-  private void AppendClassHeading(ICharacterClass characterClass)
+  private void AppendClassHeading(CharacterClass characterClass)
   {
     _stringBuilder.AppendLine($$$"""
                                 {{wide
@@ -89,9 +89,9 @@ public sealed class HomebreweryDocumentBuilder
                                 """);
   }
 
-  private void AppendFlavour(ICharacterClass characterClass) => _stringBuilder.AppendLine($"{characterClass.Flavour}");
+  private void AppendFlavour(CharacterClass characterClass) => _stringBuilder.AppendLine($"{characterClass.Flavour}");
 
-  private void AppendClassPageHeader(ICharacterClass characterClass)
+  private void AppendClassPageHeader(CharacterClass characterClass)
   {
     _stringBuilder.AppendLine($$$"""
                                 \page
@@ -109,7 +109,7 @@ public sealed class HomebreweryDocumentBuilder
                                 """);
   }
 
-  private void AppendThemes(ICharacterClass characterClass)
+  private void AppendThemes(CharacterClass characterClass)
   {
     _stringBuilder.AppendLine("""
                               | Theme |  |
