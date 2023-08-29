@@ -65,7 +65,8 @@ public sealed class HomebreweryDocumentBuilder
 
   private void AppendClassProgressionTableLine(ICharacterClass characterClass, int level)
   {
-    _stringBuilder.AppendLine($"| {level} | {characterClass.HitDicePerLevel * (level+1)} | +{Math.Ceiling(characterClass.AttackBonusPerLevel*(level+1))} | {level} | { 1+(level+1)/3 }");
+    var levelPlusOne = level + 1;
+    _stringBuilder.AppendLine($"| {levelPlusOne} | {characterClass.HitDicePerLevel * levelPlusOne} | +{Math.Ceiling(characterClass.AttackBonusPerLevel*levelPlusOne)} | {level} | { 1+levelPlusOne/3 }");
   }
 
   private void AppendFeatures(ICharacterClass characterClass, FeatureType featureType)
