@@ -110,17 +110,13 @@ public sealed class HomebreweryDocumentBuilder
   private void AppendThemes(ICharacterClass characterClass)
   {
     _stringBuilder.AppendLine("#### Themes");
+    _stringBuilder.AppendLine("""
+                              | Theme | Description |
+                              |------:|:---------|
+                              """);
     foreach (var theme in characterClass.Themes)
-      AppendTheme(theme);
+      AppendThemeTableLine(theme);
   }
 
-  private void AppendTheme(Theme theme)
-  {
-    _stringBuilder.AppendLine($$$"""
-                                 {{feature
-                                 **{{{theme.Name}}}:** {{{theme.Description}}}
-                                 }}
-                                 """);
-  }
-
+  private void AppendThemeTableLine(Theme theme) => _stringBuilder.AppendLine($"| {theme.Name} | {theme.Description} |");
 }
