@@ -1,12 +1,13 @@
-﻿using YaksRPG.CharacterClasses;
+﻿using YaksRPG;
+using YaksRPG.CharacterClasses;
 using YaksRPG.Models;
-using YaksRPG.Services;
 
 var homebreweryDocumentBuilder = new HomebreweryDocumentBuilder();
-homebreweryDocumentBuilder.AddCharacterClasses(new ICharacterClass[]
+homebreweryDocumentBuilder.AppendFiller();
+homebreweryDocumentBuilder.AppendCharacterClasses(new ICharacterClass[]
 {
   new Berserker(),
   new Abjurer()
 });
 var outputFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "HomebreweryGenerator", "Output.txt");
-File.WriteAllText(outputFilePath, homebreweryDocumentBuilder.GenerateHomebreweryDocument());
+File.WriteAllText(outputFilePath, homebreweryDocumentBuilder.ToString());
