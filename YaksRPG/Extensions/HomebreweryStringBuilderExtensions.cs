@@ -71,7 +71,7 @@ public static class HomebreweryStringBuilderExtensions
 
   private static void AppendClassProgressionTableLine(this StringBuilder stringBuilder, ICharacterClass characterClass, int level)
   {
-    stringBuilder.AppendLine($"| {level} | {characterClass.AttackBonusPerLevel} | {characterClass.AttackBonusPerLevel*level} | {level} | { level/4 }");
+    stringBuilder.AppendLine($"| {level} | {characterClass.HitDicePerLevel * (level+1)} | +{Math.Ceiling(characterClass.AttackBonusPerLevel*(level+1))} | {level} | { 1+(level+1)/3 }");
   }
   
   private static void AppendFeatures(this StringBuilder stringBuilder, ICharacterClass characterClass, FeatureType featureType)
