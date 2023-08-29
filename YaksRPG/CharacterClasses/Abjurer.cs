@@ -13,14 +13,9 @@ public sealed class Abjurer : ICharacterClass
                            Called abjurers, members of this school are sought when baleful spirits require exorcism, when important locations must be guarded against magical spying, and when portals to other planes of existence must be closed.
                            """;
 
-  public DiceRoll HitDicePerLevel { get; } = new()
-  {
-    NumberOfDice = 1,
-    NumberOfSides = 8,
-    Modifier = -2
-  };
+  public DiceRoll HitDicePerLevel { get; } = new(1, 6, -2);
 
-  public float AttackBonusPerLevel => 0.7f;
+  public float AttackBonusPerLevel => 0.5f;
 
   public IEnumerable<Feature> Features { get; } = new[]
   {
