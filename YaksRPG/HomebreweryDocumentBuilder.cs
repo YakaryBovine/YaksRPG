@@ -32,24 +32,6 @@ public sealed class HomebreweryDocumentBuilder
                                - ## [{{ Introduction}}{{ 2}}](#p3)
                                - ## [{{ Berserker}}{{ 3}}](#p4)
                              }}
-
-                             \page
-                             {{pageNumber,auto}}
-                             {{footnote Summary}}
-
-                             {{wide
-                             ## Introduction
-                             }}
-                             Introduction goes here.
-
-                             ### Foreword
-                             Foreword goes here.
-                             {{wide,padding-top:350px,padding-bottom:100px
-
-                             #### Credits
-
-                             Credit goes here.
-                             }}
                              """);
   }
 
