@@ -19,7 +19,7 @@ public sealed class Berserker : ICharacterClass
     Modifier = 2
   };
 
-  public int AttackBonusPerLevel => 1;
+  public float AttackBonusPerLevel => 1;
 
   public IEnumerable<Feature> Features { get; } = new[]
   {
