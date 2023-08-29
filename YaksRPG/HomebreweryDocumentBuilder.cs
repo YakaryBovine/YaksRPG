@@ -112,7 +112,7 @@ public sealed class HomebreweryDocumentBuilder
   private void AppendThemes(CharacterClass characterClass)
   {
     _stringBuilder.AppendLine("""
-                              | Theme |  |
+                              | Themes |  |
                               |:------|---------:|
                               """);
     foreach (var theme in characterClass.Themes)
