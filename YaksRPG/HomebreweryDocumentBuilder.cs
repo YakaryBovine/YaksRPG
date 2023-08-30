@@ -71,7 +71,11 @@ public sealed class HomebreweryDocumentBuilder
 
   private void AppendFeatures(CharacterClass characterClass, FeatureType featureType)
   {
-    var matchingFeatures = characterClass.Features.Where(x => x.Type == featureType).ToList();
+    var matchingFeatures = characterClass.Features
+      .Where(x => x.Type == featureType)
+      .OrderBy(x => x.Theme?.Name)
+      .ToList();
+    
     if (!matchingFeatures.Any())
       return;
     
@@ -115,7 +119,8 @@ public sealed class HomebreweryDocumentBuilder
                               | Themes |  |
                               |:------|---------:|
                               """);
-    foreach (var theme in characterClass.Themes)
+    var orderedThemes = characterClass.Themes.OrderBy(x => x.Name);
+    foreach (var theme in orderedThemes)
       AppendThemeTableLine(theme);
     
     _stringBuilder.AppendLine();
