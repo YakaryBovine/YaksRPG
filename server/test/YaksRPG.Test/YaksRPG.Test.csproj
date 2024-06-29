@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\YaksRPG\YaksRPG.csproj" />
+      <ProjectReference Include="..\..\src\YaksRPG.Domain\YaksRPG.Domain.csproj" />
     </ItemGroup>
 
 </Project>
